@@ -33,12 +33,54 @@ public class CurrencyManagerMB implements Serializable {
     private CurrencyControllerBean ccb;
     private String srcCurrency;
     private String toCurrency;
-    private double amount;
-    
-    
+    private int amount;
+    private String conversionResult;
+    @Inject
+    private Conversation conversation;
     
     
     public CurrencyManagerMB() {
+        
     }
+    
+     private void startConversation() {
+        if (conversation.isTransient()) {
+            conversation.begin();
+        }
+    }
+
+    private void stopConversation() {
+        if (!conversation.isTransient()) {
+            conversation.end();
+        }
+    }
+
+    
+     
+    
+    public String convertCurr(){
+        String res = null;
+        try {
+            res = CurrencyControllerBean.convert(srcCurrency,toCurrency,amount);
+        } catch (Exception e) {
+            //print error
+        }
+        
+        return res;
+    }
+    public void settoCurrency(String input){
+        this.toCurrency = input;
+    }
+    public String gettoCurrency(){
+        return toCurrency;
+    }
+    
+    public void setsrcCurrency(String input){
+        this.toCurrency = input;
+    }
+    public String getsrcCurrency(){
+        return toCurrency;
+    }
+    
     
 }
