@@ -25,9 +25,12 @@ public class CurrencyControllerBean {
     private EntityManager em;
     
     
+    public String convert(String src, String sink, int amount){
+        Currency newCurr =  em.find(Currency.class , src);
+        String convertResult =  newCurr.convert(sink,amount );
+        return convertResult;
+        
+    }
     
     
-    
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
 }

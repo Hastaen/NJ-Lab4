@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Welcome to the Currency Exchange</title>
+    </h:head>
+    <h:body>
+        <h1>Welcome to the Currency Exchange</h1>
+
+        <h3>Choose your currencies:</h3>
+        
+        <hr/>
+
+        <h:form>
+            <h3>Find Account</h3>
+            <p>
+                <h:outputLabel for="searchedAcct" value="Account Number: "/>
+                <h:inputText id="searchedAcct" value="#{acctManager.searchedAcct}"/>
+                
+                <h:outputLabel for="convertCurr" value="You will get the following: "/>
+                <h:inputText id="srcCurr" value="#{currencyManagerMB.srcCurrency}"/>
+                <h:inputText id="sinkCurr" value="#{currencyManagerMB.toCurrency}"/>
+                
+            </p>
+            <p>
+                <h:commandButton value="Convert" action="#{currencyManagerMB.convertCurr}"/>
+            </p>
+            <hr/>
+
+        </h:form>
+
+    </h:body>
+</html>
+
