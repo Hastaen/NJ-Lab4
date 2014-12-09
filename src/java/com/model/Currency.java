@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.model;
 
 import java.io.Serializable;
@@ -20,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Jonas
+ * @author Henrik
  */
 @Entity
 @Table(name = "CURRENCY")
@@ -72,6 +71,26 @@ public class Currency implements Serializable {
         this.usd = usd;
     }
 
+    public String convert(String toCurrency, int amount){
+        double result = 0;
+        
+        switch (toCurrency) {
+            case "euro":  result = calculateConversion(euro, amount);
+                     break;
+            case "pounds":  result = calculateConversion(pounds, amount);
+                     break;
+            case "kronor":  result = calculateConversion(kronor, amount);
+                     break;
+            case "usd":  result = calculateConversion(usd, amount);
+                     break;
+        }
+        return String.valueOf(result);
+    }
+    
+    private double calculateConversion(double currency, int amount){
+        return currency * amount;
+    }
+        
     public String getSrc() {
         return src;
     }
