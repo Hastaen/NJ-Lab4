@@ -12,16 +12,22 @@ import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.PersistenceContext;
+import java.io.Serializable;
+import javax.ejb.EJB;
+import javax.enterprise.context.Conversation;
+import javax.enterprise.context.ConversationScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 /**
  *
  * @author Jonas
  */
 
 
-
+@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 @Stateless
 public class CurrencyControllerBean {
-    @PersistenceContext(unitName = "NJ-Lab4")
+    @PersistenceContext(unitName = "NJ-Lab4PU")
     private EntityManager em;
     
     

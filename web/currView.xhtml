@@ -15,13 +15,17 @@
         <h:form>
             <h3>Find Account</h3>
             <p>
-                <h:outputLabel for="searchedAcct" value="Account Number: "/>
-                <h:inputText id="searchedAcct" value="#{acctManager.searchedAcct}"/>
+           
+                <h:outputLabel for="convertCurr" rendered="#{currencyManagerMB.conversionResult != null}"  value="Conversion res: "/>
+                <h:outputText id="convertCurr" value="#{currencyManagerMB.conversionResult}"/>
+                <h:outputText rendered="#{currencyManagerMB.conversionResult == null}"  value="No current conversion."/>
                 
-                <h:outputLabel for="convertCurr" value="You will get the following: "/>
+                
+                 <hr/>
                 <h:inputText id="srcCurr" value="#{currencyManagerMB.srcCurrency}"/>
                 <h:inputText id="sinkCurr" value="#{currencyManagerMB.toCurrency}"/>
-                
+                 <hr/>
+               <h:inputText id="am" value="#{currencyManagerMB.amount}"/>
             </p>
             <p>
                 <h:commandButton value="Convert" action="#{currencyManagerMB.convertCurr}"/>

@@ -28,20 +28,18 @@ public class CurrencyManagerMB implements Serializable {
     /**
      * Creates a new instance of CurrencyManagerMB
      */
-
+    
+    private static final long serialVersionUID = 16247164405L;
     @EJB
     private CurrencyControllerBean ccb;
     private String srcCurrency;
     private String toCurrency;
-    private int amount;
-    private String conversionResult;
+    private int Amount;
+    private String conversionResult = null;
     @Inject
     private Conversation conversation;
     
     
-    public CurrencyManagerMB() {
-        
-    }
     
      private void startConversation() {
         if (conversation.isTransient()) {
@@ -56,18 +54,31 @@ public class CurrencyManagerMB implements Serializable {
     }
 
     
-     
+     public String getconversionResult(){
+         return conversionResult;
+     }
     
-    public String convertCurr(){
-        String res = null;
+    public void convertCurr(){
+      
         try {
-            res = CurrencyControllerBean.convert(srcCurrency,toCurrency,amount);
+            startConversation();
+            conversionResult = ccb.convert(srcCurrency,toCurrency,Amount);
         } catch (Exception e) {
             //print error
+            
         }
         
-        return res;
+        
     }
+    
+     public void setAmount(String input){
+        this.Amount = Integer.parseInt(input);
+    }
+    public String getAmount(){
+        return String.valueOf(Amount);
+    }
+    
+    
     public void settoCurrency(String input){
         this.toCurrency = input;
     }
@@ -76,10 +87,10 @@ public class CurrencyManagerMB implements Serializable {
     }
     
     public void setsrcCurrency(String input){
-        this.toCurrency = input;
+        this.srcCurrency = input;
     }
     public String getsrcCurrency(){
-        return toCurrency;
+        return srcCurrency;
     }
     
     
