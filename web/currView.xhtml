@@ -13,7 +13,7 @@
         <hr/>
 
         <h:form>
-            <h3>Find Account</h3>
+            <h3>Currency Magic</h3>
             <p>
            
                 <h:outputLabel for="convertCurr" rendered="#{currencyManagerMB.conversionResult != null}"  value="Conversion res: "/>
@@ -22,9 +22,12 @@
                 
                 
                  <hr/>
+                 <h:outputLabel for="srcCurr" value="Enter the source currency: "/>
                 <h:inputText id="srcCurr" value="#{currencyManagerMB.srcCurrency}"/>
+                 <h:outputLabel for="sinkCurr" value="Enter the currency you want: "/>
                 <h:inputText id="sinkCurr" value="#{currencyManagerMB.toCurrency}"/>
                  <hr/>
+                 <h:outputLabel for="am" value="Enter amount of source currency: "/>
                <h:inputText id="am" value="#{currencyManagerMB.amount}"/>
             </p>
             <p>

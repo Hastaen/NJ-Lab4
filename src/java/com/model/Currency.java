@@ -72,6 +72,7 @@ public class Currency implements Serializable {
     }
 
     public String convert(String toCurrency, int amount){
+        System.out.println("INSIDE FUCKING JPA SHIT MF SHIT !!!!!!!!!!!!!!!!!!!!!!!!! ");
         double result = 0;
         
         switch (toCurrency) {
@@ -84,6 +85,7 @@ public class Currency implements Serializable {
             case "usd":  result = calculateConversion(usd, amount);
                      break;
         }
+        System.out.println(result);
         return String.valueOf(result);
     }
     
